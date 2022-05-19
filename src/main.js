@@ -11,6 +11,11 @@ var makeNewButton = document.querySelector('.make-new-button')
 
 // console.log(coverTitle)
 // // We've provided a few variables below
+
+var randomImg = covers[getRandomIndex(covers)];
+var randomTitle = titles[getRandomIndex(titles)];
+var randomDescrip = descriptors[getRandomIndex(descriptors)];
+
 // var covers = [
 //   './assets/bluebrocade.jpg',
 //   './assets/dance.jpg',
@@ -104,26 +109,27 @@ var makeNewButton = document.querySelector('.make-new-button')
 //   "melancholy"
 // ];
 //
-// class Cover {
-//   constructor(coverImgSrc, title, descriptor1, descriptor2) {
-//     this.id = Date.now();
-//     this.cover = coverImgSrc;
-//     this.title = title;
-//     this.tagline1 = descriptor1;
-//     this.tagline2 = descriptor2;
-//   }
-// }
 
+class Cover {
+  constructor(coverImgSrc, title, descriptor1, descriptor2) {
+    this.id = Date.now();
+    this.cover = coverImgSrc;
+    this.title = title;
+    this.tagline1 = descriptor1;
+    this.tagline2 = descriptor2;
+  }
+}
 
-// var savedCovers = [
+var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
-var currentCover;
 
+var currentCover;
 // var randomCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
-// console.log(currentCover)
+
 // Add your event listeners here 👇
 randomCoverButton.addEventListener('click', makeRandomCover)
+
 
 // Create your event handlers and other functions here 👇
 
@@ -134,7 +140,7 @@ function getRandomIndex(array) {
 }
 
 function makeRandomCover() {
-  var randomCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)])
+  var randomCover = new Cover(randomImg, randomTitle, randomDescrip, randomDescrip)
   coverImage = randomCover.cover
   coverTitle = randomCover.title
   tagline1 = randomCover.tagline1
