@@ -10,8 +10,13 @@ var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
 var viewHomeImage = document.querySelector('.main-cover');
-var savedView = document.querySelector('.saved-view')
-var savedCoverSection = document.querySelector('.saved-covers-section')
+var savedView = document.querySelector('.saved-view');
+var savedCoverSection = document.querySelector('.saved-covers-section');
+var customCoverInput = document.querySelector('.user-cover');
+var customTitleInput  = document.querySelector('.user-title');
+var customDescrip1Input  = document.querySelector('.user-desc1');
+var customDescrip2Input = document.querySelector('.user-desc2');
+var customCoverButton = document.querySelector('.create-new-book-button');
 // // We've provided a few variables below
 
 var savedCovers = [
@@ -31,6 +36,8 @@ viewSavedButton.addEventListener('click', goToSaved);
 saveCoverButton.addEventListener('click', saveCover);
 
 homeButton.addEventListener('click', goToHome);
+
+customCoverButton.addEventListener('click', makeCustomCover);
 
 // Create your event handlers and other functions here 👇
 
@@ -77,6 +84,27 @@ function goToSaved() {
   randomCoverButton.classList.add('hidden');
   homeButton.classList.remove('hidden');
 }
+
+function makeCustomCover(event) {
+event.preventDefault();
+  covers.push(customCoverInput.value);
+  titles.push(customTitleInput.value);
+  descriptors.push(customDescrip1Input.value);
+  descriptors.push(customDescrip2Input.value);
+var newCustomCover = new Cover(customCoverInput.value, customTitleInput.value, customDescrip1Input.value, customDescrip2Input.value);
+  viewHomeImage.classList.remove('hidden');
+  formView.classList.add('hidden');
+  homeButton.classList.add('hidden');
+  viewSavedButton.classList.remove('hidden');
+  randomCoverButton.classList.remove('hidden');
+  saveCoverButton.classList.remove('hidden');
+  makeNewButton.classList.remove('hidden');
+    coverImage.src = newCustomCover.cover;
+    coverTitle.innerText = newCustomCover.title;
+    tagline1.innerText = newCustomCover.tagline1;
+    tagline2.innerText = newCustomCover.tagline2;
+}
+
 
 function saveCover() {
 
