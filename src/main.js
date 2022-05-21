@@ -76,18 +76,20 @@ function goToHome() {
 }
 
 function goToSaved() {
-// for (i = 0; i < savedCovers.length; i++) {
-//
-//  savedCoverSection.innerHTML =
-//      <img class= "cover-image" src=`{savedCovers[i].cover}`>
-//      <h2 class="mini-cover">`{savedCovers[i].title}`</h2>
-//      <h3 class="tagline">A tale of <span class="tagline-1">`{savedCovers[i].tagline1}`</span> and <span class="tagline-2">`{savedCovers[i].tagline2}`</span></h3>
-//      <img class="price-tag" src="./assets/price.png">
-//      <img class="overlay" src="./assets/overlay.png">
-//
-// console.log(savedCovers.innerHTML)
+  var showSavedCovers = ""
+    for (i = 0; i < savedCovers.length; i++) {
+      showSavedCovers +=
 
-// }
+        `<section class='mini-cover'>
+        <img class= "cover-image" id= "${savedCovers[i].id}" src=${savedCovers[i].cover}>
+        <h2 class="cover-title">${savedCovers[i].title}</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+        <img class="price-tag" src="./assets/price.png">
+        <img class="overlay" src="./assets/overlay.png">`
+
+        savedCoverSection.innerHTML = showSavedCovers
+}
+
   viewHomeImage.classList.add('hidden')
   formView.classList.add('hidden')
   savedView.classList.remove('hidden')
@@ -103,26 +105,18 @@ event.preventDefault();
   descriptors.push(customDescrip1Input.value);
   descriptors.push(customDescrip2Input.value);
 var newCustomCover = new Cover(customCoverInput.value, customTitleInput.value, customDescrip1Input.value, customDescrip2Input.value);
-  viewHomeImage.classList.remove('hidden');
-  formView.classList.add('hidden');
-  homeButton.classList.add('hidden');
-  viewSavedButton.classList.remove('hidden');
-  randomCoverButton.classList.remove('hidden');
-  saveCoverButton.classList.remove('hidden');
-  makeNewButton.classList.remove('hidden');
     coverImage.src = newCustomCover.cover;
     coverTitle.innerText = newCustomCover.title;
     tagline1.innerText = newCustomCover.tagline1;
     tagline2.innerText = newCustomCover.tagline2;
+    goToHome();
 }
-
 
 function saveCover() {
   var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
-  if(!savedCovers.includes(currentCover)) {
-    savedCovers.push(currentCover);
-    console.log(savedCovers);
-  }
+   if (!savedCovers.includes(currentCover)) {
+     savedCovers.push(currentCover);
+     console.log(savedCovers)
+     console.log(currentCover)
+   }
 }
-
-//use classList for hidden/non hidden toggle function
