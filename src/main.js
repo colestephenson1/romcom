@@ -9,7 +9,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
-var viewHomeImage = document.querySelector('.main-cover');
+var viewHomeImage = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
 var savedCoverSection = document.querySelector('.saved-covers-section');
 var customCoverInput = document.querySelector('.user-cover');
@@ -31,16 +31,12 @@ var savedCovers = [
 
 
 // Add your event listeners here 👇
+window.addEventListener('load', makeRandomCover);
 randomCoverButton.addEventListener('click', makeRandomCover);
-
 makeNewButton.addEventListener('click', goToMakeCover);
-
 viewSavedButton.addEventListener('click', goToSaved);
-
 saveCoverButton.addEventListener('click', saveCover);
-
 homeButton.addEventListener('click', goToHome);
-
 customCoverButton.addEventListener('click', makeCustomCover);
 
 // Create your event handlers and other functions here 👇
@@ -82,8 +78,9 @@ function goToHome() {
 function goToSaved() {
 // for (i = 0; i < savedCovers.length; i++) {
 //
-//  savedCoverSection.innerHTML = <img class= "cover-image" src=`{savedCovers[i].cover}`>
-//      <h2 class="cover-title">`{savedCovers[i].title}`</h2>
+//  savedCoverSection.innerHTML =
+//      <img class= "cover-image" src=`{savedCovers[i].cover}`>
+//      <h2 class="mini-cover">`{savedCovers[i].title}`</h2>
 //      <h3 class="tagline">A tale of <span class="tagline-1">`{savedCovers[i].tagline1}`</span> and <span class="tagline-2">`{savedCovers[i].tagline2}`</span></h3>
 //      <img class="price-tag" src="./assets/price.png">
 //      <img class="overlay" src="./assets/overlay.png">
@@ -125,7 +122,7 @@ function saveCover() {
   if(!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
     console.log(savedCovers);
-}
+  }
 }
 
 //use classList for hidden/non hidden toggle function
