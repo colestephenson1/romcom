@@ -17,13 +17,17 @@ var customTitleInput  = document.querySelector('.user-title');
 var customDescrip1Input  = document.querySelector('.user-desc1');
 var customDescrip2Input = document.querySelector('.user-desc2');
 var customCoverButton = document.querySelector('.create-new-book-button');
+var homeView = document.querySelector('.home-view');
+
+console.log(homeView.childNodes);
 // // We've provided a few variables below
 
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 
-var currentCover;
+
+// var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
 
 
 // Add your event listeners here 👇
@@ -76,7 +80,17 @@ function goToHome() {
 }
 
 function goToSaved() {
-  savedCoverSection.innerText = savedCovers
+// for (i = 0; i < savedCovers.length; i++) {
+//
+//  savedCoverSection.innerHTML = <img class= "cover-image" src=`{savedCovers[i].cover}`>
+//      <h2 class="cover-title">`{savedCovers[i].title}`</h2>
+//      <h3 class="tagline">A tale of <span class="tagline-1">`{savedCovers[i].tagline1}`</span> and <span class="tagline-2">`{savedCovers[i].tagline2}`</span></h3>
+//      <img class="price-tag" src="./assets/price.png">
+//      <img class="overlay" src="./assets/overlay.png">
+//
+// console.log(savedCovers.innerHTML)
+
+// }
   viewHomeImage.classList.add('hidden')
   formView.classList.add('hidden')
   savedView.classList.remove('hidden')
@@ -107,7 +121,11 @@ var newCustomCover = new Cover(customCoverInput.value, customTitleInput.value, c
 
 
 function saveCover() {
-
+  var currentCover = new Cover(coverImage.src, coverTitle.innerText, tagline1.innerText, tagline2.innerText)
+  if(!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+    console.log(savedCovers);
+}
 }
 
 //use classList for hidden/non hidden toggle function
