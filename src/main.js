@@ -37,7 +37,7 @@ viewSavedButton.addEventListener('click', showSavedCoverSection);
 saveCoverButton.addEventListener('click', saveCover);
 homeButton.addEventListener('click', goToHome);
 customCoverButton.addEventListener('click', makeCustomCover);
-savedView.addEventListener('dblclick', deleteSavedCover)
+savedView.addEventListener('dblclick', deleteSavedCover);
 
 // Create your event handlers and other functions here 👇
 // We've provided one function to get you started
@@ -122,7 +122,7 @@ function saveCover() {
 
 function deleteSavedCover(event) {
  for (i = 0; i < savedCovers.length; i++) {
-   if (savedCovers[i].id == event.target.id) {
+   if (event.target.id == savedCovers[i].id) {
      savedCovers.splice(i, 1)
    }
  }
